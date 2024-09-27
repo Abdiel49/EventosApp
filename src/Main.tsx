@@ -1,11 +1,10 @@
-// TODO: estas importaciones no se utilizan, eliminarlas
-import { View, Text } from 'react-native'
 import React from 'react'
-import WelcomeScreen from './screens/WelcomeScreen'
+
+import AppNavigation from './navigation/AppNavigation'
 
 const Main = () => {
   return (
-    <WelcomeScreen />
+    <AppNavigation />
   )
 }
 

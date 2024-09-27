@@ -1,14 +1,28 @@
-import {View, Text, SafeAreaView, StyleSheet} from 'react-native'
+import {SafeAreaView, StyleSheet} from 'react-native'
+import { NavigationProp } from '@react-navigation/native';
+
+import { RootNavigationParamList } from '../navigation/AppNavigation';
+
 import TextComponent from '../components/TextComponent';
 import ButtonComponent from '../components/ButtonComponent';
 
-const WelcomeScreen = () => {
+type Props = {
+  navigation: NavigationProp<RootNavigationParamList>,
+}
+
+const WelcomeScreen = ({ navigation }: Props) => {
+
   const handleOnPress = () => {
     console.log('texto en negrita presionado')
   };
 
   const handleOnPressButton = () => {
-    console.log('Este es un botón presionado');
+    // navigation.navigate('EventDetailScreen')
+    navigation.navigate('EventDetailScreen', {
+      name: 'abdiel',
+      lastName: "Orellana",
+      course: "Expo",
+    })
   };
 
   return (
@@ -32,7 +46,7 @@ const WelcomeScreen = () => {
       </TextComponent>
 
       <ButtonComponent
-        title='Preciona aquí!'
+        title='Ir al detalle del evento!'
         disabled={false}
         onPress={handleOnPressButton}
       />
