@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import EventDetailScreen from '../screens/EventDetailScreen';
 import { colors } from '../theme/colors';
+import HomeScreen from '../screens/HomeScreen';
 
 /**
  * Asignamos el tipo de dato Data
@@ -23,8 +24,9 @@ export interface Data {
  * podemos decir tambien podria ser 'undefined': EventDetailScreen: Data | undefined,
  */
 export type RootNavigationParamList = {
-  WelcomeScreen: undefined,
-  EventDetailScreen: Data,
+  WelcomeScreen: undefined;
+  EventDetailScreen: Data;
+  HomeScreen: undefined;
 }
 
 const Stack = createNativeStackNavigator<RootNavigationParamList>();
@@ -32,7 +34,7 @@ const Stack = createNativeStackNavigator<RootNavigationParamList>();
 const AppNavigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName='HomeScreen'>
         <Stack.Screen
           name="WelcomeScreen"
           component={WelcomeScreen}
@@ -81,6 +83,16 @@ const AppNavigation = () => {
           options={{
             headerShown: true,
             title: 'Evento',
+            // headerBackTitle: '',
+            headerBackTitleVisible: false,
+          }}
+        />
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            headerShown: true,
+            title: 'Eventos',
             // headerBackTitle: '',
             headerBackTitleVisible: false,
           }}
