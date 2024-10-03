@@ -5,12 +5,15 @@ import { RootNavigationParamList } from '../navigation/AppNavigation';
 
 import TextComponent from '../components/TextComponent';
 import ButtonComponent from '../components/ButtonComponent';
+import TextInputComponent from '../components/TextInputComponent';
+import { useState } from 'react';
 
 type Props = {
   navigation: NavigationProp<RootNavigationParamList>,
 }
 
 const WelcomeScreen = ({ navigation }: Props) => {
+  const [input, setInput] = useState<string>('')
 
   const handleOnPress = () => {
     console.log('texto en negrita presionado')
@@ -45,11 +48,26 @@ const WelcomeScreen = ({ navigation }: Props) => {
         </TextComponent>
       </TextComponent>
 
-      <ButtonComponent
+      <TextComponent
+          size='24'
+          weight='bold'
+          color='dark'
+          // underline={true}
+          // onPress={handleOnPress}
+        >
+          {`Input value ${input}`}
+        </TextComponent>
+
+      <TextInputComponent
+        placeholder='Ingrese Texto'
+        value={input}
+        onChangeText={(text) => setInput(text)}
+      />
+      {/* <ButtonComponent
         title='Ir al detalle del evento!'
         disabled={false}
         onPress={handleOnPressButton}
-      />
+      /> */}
     </SafeAreaView>
   )
 }

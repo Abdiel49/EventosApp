@@ -1,5 +1,5 @@
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
 
 import TextComponent from '../components/TextComponent'
 
@@ -7,10 +7,21 @@ import { colors } from '../theme/colors'
 import { categoriasEventos } from '../assets/data/categorias'
 import CategoryBtn from '../components/CategoryBtn'
 import { moviesData } from '../assets/data/movies'
+import { useAppDispatch, useAppSelector } from '../hooks/redux.hook'
+import { getCategoriesService } from '../store/slices/categories'
 
 const HomeScreen = () => {
   const [categoryActive, setCategoryActive] = useState<any>(categoriasEventos[0])
 
+  const {category: categories, isLoading, selectedCategory} = useAppSelector(state => state.categories);
+  const dispatch = useAppDispatch();
+
+  console.log('store categories', categories)
+
+  useEffect(() => {
+    dispatch(getCategoriesService())
+  }, [])
+  
   return (
     <ScrollView style={styles.container}>
       <View style={styles.categoriesContainer}>
@@ -20,18 +31,25 @@ const HomeScreen = () => {
           contentContainerStyle={styles.categoriesContent}
           showsHorizontalScrollIndicator={false}
         >
-          {categoriasEventos.map(category => (
-            <CategoryBtn
-              key={category.id}
-              color={category.color}
-              icon={category.icon}
-              name={category.name}
-              isActive={(category.id === categoryActive.id) ?? false}
-              onPress={() => {
-                setCategoryActive(category)
-              }}
-            />
-          ))}
+          {isLoading ? (
+            <ActivityIndicator color={colors.primary} size={50} />
+          ) : (
+            <>
+              {categoriasEventos.map(category => (
+                <CategoryBtn
+                  key={category.id}
+                  color={category.color}
+                  icon={category.icon}
+                  name={category.name}
+                  isActive={(category.id === categoryActive.id) ?? false}
+                  onPress={() => {
+                    setCategoryActive(category)
+                  }}
+                />
+              ))}
+            </>
+          )
+        }
         </ScrollView>
       </View>
 
