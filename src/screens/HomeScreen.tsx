@@ -41,7 +41,7 @@ const HomeScreen = () => {
                   color={category.color}
                   icon={category.icon}
                   name={category.name}
-                  isActive={(category.id === categoryActive.id) ?? false}
+                  isActive={(category.id === categoryActive.id) || false}
                   onPress={() => {
                     setCategoryActive(category)
                   }}

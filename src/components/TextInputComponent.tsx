@@ -16,7 +16,7 @@ const TextInputComponent = (props: TextInputComponentProps) => {
       testID={ props.testID ?? 'TextInputComponent' }
       placeholderTextColor={ props.placeholderTextColor || colors.muted }
       placeholder={ props.placeholder ?? '' }
-      secureTextEntry={ props.type === 'password' ?? props.secureTextEntry }
+      secureTextEntry={ props.type === 'password' || props.secureTextEntry }
       keyboardType={
         props.keyboardType ?? props.type === 'email'
           ? 'email-address'

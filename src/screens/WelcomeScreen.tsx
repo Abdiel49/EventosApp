@@ -1,15 +1,13 @@
 import {SafeAreaView, StyleSheet} from 'react-native'
 import { NavigationProp } from '@react-navigation/native';
 
-import { RootNavigationParamList } from '../navigation/AppNavigation';
-
 import TextComponent from '../components/TextComponent';
 import ButtonComponent from '../components/ButtonComponent';
 import TextInputComponent from '../components/TextInputComponent';
 import { useState } from 'react';
 
 type Props = {
-  navigation: NavigationProp<RootNavigationParamList>,
+  navigation: NavigationProp<any>,
 }
 
 const WelcomeScreen = ({ navigation }: Props) => {
@@ -21,11 +19,11 @@ const WelcomeScreen = ({ navigation }: Props) => {
 
   const handleOnPressButton = () => {
     // navigation.navigate('EventDetailScreen')
-    navigation.navigate('EventDetailScreen', {
-      name: 'abdiel',
-      lastName: "Orellana",
-      course: "Expo",
-    })
+    // navigation.navigate('EventDetailScreen', {
+    //   name: 'abdiel',
+    //   lastName: "Orellana",
+    //   course: "Expo",
+    // })
   };
 
   return (
