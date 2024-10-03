@@ -10,8 +10,10 @@ import { colors } from '@app/theme/colors';
 const HomeScreen = () => {
 
   return (
-    <ScrollView style={styles.container}>
-
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.content}
+    >
       <SectionContainer title='Categorías'>
         <CategoriesList  />
       </SectionContainer>
@@ -32,5 +34,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: colors.white,
-  }
+  },
+  content: {
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+  },
 });

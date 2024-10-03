@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     minHeight: 220,
     // resizeMode: 'stretch',
     borderRadius: 5,
-    backgroundColor: 'red',
+    backgroundColor: 'white',
   },
   cardDetails: {
     flexDirection: 'row',
