@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-import ButtonComponent from '../components/ButtonComponent'
-import { RootNavigationParamList } from '../navigation/AppNavigation'
+import ButtonComponent from '@app/components/molecules/ButtonComponent'
+// import ButtonComponent from '../components/ButtonComponent'
+// import { RootNavigationParamList } from '../navigation/AppNavigation'
 
 type Props = {
-  navigation: NavigationProp<RootNavigationParamList>,
-  route: RouteProp<RootNavigationParamList, 'EventDetailScreen'>,
+  navigation: NavigationProp<any>,
+  route: RouteProp<any, 'EventDetailScreen'>,
 }
 
 const EventDetailScreen = (props: Props) => {

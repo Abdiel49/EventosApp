@@ -2,9 +2,10 @@ import { StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
-import TextComponent from './TextComponent';
+import TextComponent from '../atoms/TextComponent';
 
-import { colors } from '../theme/colors';
+import { colors } from '@app/theme/colors';
+
 
 type Props = {
   name: string;
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 40,
     borderWidth: 2,
-    paddingVertical: 10,
+    paddingVertical: 6,
     paddingHorizontal: 15, 
     gap: 10,
   },

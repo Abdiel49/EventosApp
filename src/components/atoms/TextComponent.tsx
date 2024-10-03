@@ -1,7 +1,7 @@
 import { ColorValue, StyleSheet, Text, TextProps } from 'react-native';
 import React from 'react';
 
-import { colors } from '../theme/colors';
+import { colors } from '../../theme/colors';
 
 type Props = TextProps & {
   size?:  '12' | '14' | '16' | '18' | '20' | '22' | '24' | '28';

@@ -37,6 +37,119 @@ npm i --save-dev @types/react-native-vector-icons
 npm install @react-native-async-storage/async-storage
 ```
 
+## Configuracion de Absolute paths en Expo React Native
+
+Actualizar el archivo `tsconfig.json`:
+
+```json
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": ["./*"],
+    }
+  }
+}
+```
+
+con esa configuracion, todas las importaciones dentro de la carpeta/fichero `src` se harán desde `@app/*`
+
+```typescript
+import { colors } from '../theme/colors'
+// ahora será:
+import { colors } from '@app/theme/colors'
+```
+
+### Instalar plugin
+
+```sh
+npm install --save-dev babel-plugin-module-resolver
+```
+
+Ahora configurar el archivo `babel.config.js`:
+
+Antes:
+
+```javascript
+module.exports = function(api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+  };
+};
+```
+
+Despues:
+
+```javascript
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: [
+      [
+        'module-resolver',
+        {
+          root: ['./src'],
+          alias: {
+            '@app': './src',
+          },
+        },
+      ]
+    ]
+  };
+};
+```
+
+> [!IMPORTANT]  
+> Es importante reiniciar al servidor una vez hecha la configuracion.
+> Si sucede algun error al correr la app puede ejecutarlo con: `npm start -- --reset-cache` y/o desinstalar la app y volver a ejecutar.
+
+### Alternativa
+
+Alternativa, se puede generar un un alias para cada directorio dentro de `src`
+
+- `tsconfig.json`:
+
+```json
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"],
+      "@screens/*": ["screens/*"]
+    }
+  }
+}
+```
+
+- `babel.config.js`:
+
+```javascript
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: [
+      [
+        'module-resolver',
+        {
+          root: ['./src'],
+          alias: {
+            '@components': './src/components',
+            '@utils': './src/utils',
+            '@screens': './src/screens'
+          },
+        },
+      ]
+    ]
+  };
+};
+```
+
 ## Links
 
 - [https://docs.expo.dev/](https://docs.expo.dev/)
