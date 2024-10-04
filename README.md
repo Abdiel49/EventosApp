@@ -80,7 +80,7 @@ module.exports = function(api) {
 };
 ```
 
-Despues:
+Ahora:
 
 ```javascript
 module.exports = function (api) {
