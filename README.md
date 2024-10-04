@@ -150,6 +150,9 @@ module.exports = function (api) {
 };
 ```
 
+## Diagrama
+![Eventos app diagrama](EventosApp.png)
+
 ## Links
 
 - [https://docs.expo.dev/](https://docs.expo.dev/)
