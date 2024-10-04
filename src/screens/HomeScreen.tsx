@@ -1,11 +1,11 @@
 import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
-import TextComponent from '../components/TextComponent'
+import TextComponent from '../components/atoms/TextComponent'
 
 import { colors } from '../theme/colors'
 import { categoriasEventos } from '../assets/data/categorias'
-import CategoryBtn from '../components/CategoryBtn'
+import CategoryBtn from '../components/molecules/CategoryBtn'
 import { moviesData } from '../assets/data/movies'
 import { useAppDispatch, useAppSelector } from '../hooks/redux.hook'
 import { getCategoriesService } from '../store/slices/categories'
@@ -41,7 +41,7 @@ const HomeScreen = () => {
                   color={category.color}
                   icon={category.icon}
                   name={category.name}
-                  isActive={(category.id === categoryActive.id) ?? false}
+                  isActive={(category.id === categoryActive.id) || false}
                   onPress={() => {
                     setCategoryActive(category)
                   }}

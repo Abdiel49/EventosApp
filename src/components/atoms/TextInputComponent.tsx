@@ -1,7 +1,7 @@
 import { StyleSheet, TextInput, TextInputProps } from 'react-native';
 import React from 'react';
 
-import { colors } from '../theme/colors';
+import { colors } from '../../theme/colors';
 // import { colors } from '@app/theme/colors';
 
 export type TextInputComponentProps = TextInputProps & {
@@ -16,7 +16,7 @@ const TextInputComponent = (props: TextInputComponentProps) => {
       testID={ props.testID ?? 'TextInputComponent' }
       placeholderTextColor={ props.placeholderTextColor || colors.muted }
       placeholder={ props.placeholder ?? '' }
-      secureTextEntry={ props.type === 'password' ?? props.secureTextEntry }
+      secureTextEntry={ props.type === 'password' || props.secureTextEntry }
       keyboardType={
         props.keyboardType ?? props.type === 'email'
           ? 'email-address'

@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableHighlight, TouchableHighlightProps } from 'react-native';
 import React from 'react';
 
-import TextComponent from './TextComponent';
+import TextComponent from './atoms/TextComponent';
 
 import { colors } from '../theme/colors';
 

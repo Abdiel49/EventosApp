@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IEvent } from "../../types";
+
+import { IEvent } from "@app/types";
 
 type EventsSliceState = {
   events: IEvent[]
@@ -44,9 +45,15 @@ export const eventsSlice = createSlice({
         (e) => e.id!== action.payload.id
       );
     },
+    setIsLoading: (state, action: PayloadAction<boolean>)  => {
+      state.isLoading = action.payload;
+    },
+    setError: (state, action: PayloadAction<string | null>) => {
+      state.error = action.payload;
+    },
   },
 })
 
-export const EventActions = eventsSlice.actions;
+export const eventActions = eventsSlice.actions;
 
 export const EventReducer = eventsSlice.reducer;
