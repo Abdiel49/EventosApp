@@ -35,7 +35,7 @@ export const createCategoryService = (category: ICreateCategory) => async (dispa
     }
 
     setTimeout(() => {
-      // categoryActions.setCategories(categories); // esto no funciona :'v
+      // aca se manda al servidor y se crea la categoria y se retorna la categoria create
       dispatch( categoryActions.addCategory(newCategory));
       // dispatch( categoryActions.setSelectedCategory(categories[0]));
       dispatch( categoryActions.setLoading(false));

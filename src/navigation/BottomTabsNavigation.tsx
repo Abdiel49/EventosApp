@@ -50,7 +50,7 @@ const BottomTabsNavigation = () => {
         },
         tabBarActiveTintColor: '#0066CC',
         tabBarInactiveTintColor: '#A6A6A6',
-        // tabBarHideOnKeyboard: true,
+        tabBarHideOnKeyboard: true,
         tabBarLabelStyle: {
           fontWeight: '700',
           fontSize: 14,
