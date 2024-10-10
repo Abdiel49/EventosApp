@@ -1,9 +1,9 @@
 import { StyleSheet, TouchableHighlight, TouchableHighlightProps } from 'react-native';
 import React from 'react';
 
-import TextComponent from './atoms/TextComponent';
+import TextComponent from '../atoms/TextComponent';
 
-import { colors } from '../theme/colors';
+import { colors } from '@app/theme';
 
 type Props = TouchableHighlightProps & {
   title: string,

@@ -8,4 +8,5 @@ export const colors = {
   black_a40: 'rgba(0, 0, 0, 0.4)',
   lowlight: '#D9DEE4',
   red: '#FF0000',
+  light: '#F7F9FC',
 };

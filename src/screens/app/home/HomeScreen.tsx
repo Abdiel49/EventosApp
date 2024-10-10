@@ -6,8 +6,18 @@ import CategoriesList from './components/CategoriesList';
 import EventList from './components/EventList';
 
 import { colors } from '@app/theme/colors';
+import { NavigationProp } from '@react-navigation/native';
+import { HomeStackParamList } from '@app/navigation/HomeStackNavigation';
 
-const HomeScreen = () => {
+type Props = {
+  navigation: NavigationProp<HomeStackParamList>
+}
+
+const HomeScreen = (props: Props) => {
+  const handleAddCategory = () => {
+    console.log('add category')
+    props.navigation.navigate('CREATE_CATEGORY')
+  };
 
   return (
     <ScrollView
@@ -15,7 +25,7 @@ const HomeScreen = () => {
       contentContainerStyle={styles.content}
     >
       <SectionContainer title='Categorías'>
-        <CategoriesList  />
+        <CategoriesList onPressAdd={handleAddCategory}  />
       </SectionContainer>
 
       <SectionContainer title='Películas'>

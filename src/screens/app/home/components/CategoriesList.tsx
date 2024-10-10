@@ -11,6 +11,7 @@ import { colors } from '@app/theme/colors';
 
 type Props = {
   onChange?: (category: ICategory) => void
+  onPressAdd?: () => void;
 }
 
 const CategoriesList = (props: Props) => {
@@ -48,6 +49,14 @@ const CategoriesList = (props: Props) => {
               }}
             />
           ))}
+          <CategoryBtn
+            key={9999}
+            color={'green'}
+            icon={'add-circle'}
+            name={'Crear categoria'}
+            isActive={(9999 === selectedCategory?.id) || false}
+            onPress={props.onPressAdd}
+          />
         </>
       )
     }

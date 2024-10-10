@@ -1,22 +1,19 @@
 import { StyleSheet, TextInput, TextInputProps } from 'react-native';
 import React from 'react';
-
-import { colors } from '../../theme/colors';
-// import { colors } from '@app/theme/colors';
+import { colors } from '@app/theme/colors';
 
 export type TextInputComponentProps = TextInputProps & {
-  type?: 'email' | 'password' | 'numeric' | 'phone-number',
+  type?: 'email' | 'password' | 'numeric' | 'phone-number' | 'default',
 };
 
-const TextInputComponent = (props: TextInputComponentProps) => {
+const TextInputComponet = (props: TextInputComponentProps) => {
   return (
     <TextInput
       { ...props }
-      value={props.value ?? ''}
       testID={ props.testID ?? 'TextInputComponent' }
       placeholderTextColor={ props.placeholderTextColor || colors.muted }
       placeholder={ props.placeholder ?? '' }
-      secureTextEntry={ props.type === 'password' || props.secureTextEntry }
+      secureTextEntry={ props.secureTextEntry ?? props.type === 'password' }
       keyboardType={
         props.keyboardType ?? props.type === 'email'
           ? 'email-address'
@@ -31,18 +28,16 @@ const TextInputComponent = (props: TextInputComponentProps) => {
   );
 };
 
-export default TextInputComponent;
+export default TextInputComponet;
 
 const styles = StyleSheet.create({
   input: {
-    fontSize: 24,
+    fontSize: 14,
     fontWeight: '400',
     minWidth: 280,
     // lineHeight: 0,
-    // margin: 0,
-    // padding: 0,
-    color: 'red',
-    // fon
-    // backgroundColor: colors.black_a40,
+    margin: 0,
+    padding: 0,
+    color: colors.dark,
   },
 });

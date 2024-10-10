@@ -4,3 +4,9 @@ export interface ICategory {
   icon: string
   color: string
 }
+
+export interface ICreateCategory {
+  name: string
+  icon: string
+  color: string
+}
