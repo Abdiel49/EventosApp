@@ -1,14 +1,12 @@
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
+import Ionicon from 'react-native-vector-icons/Ionicons'
 
 import { FiledBaseProps } from './FiledBase';
-// import TextComponent from '../text/TextComponent';
-// import TextInputComponet from '../text/TextInputComponet';
-
-// import { eye_outline_icon, lock_outline_closed } from '@app/utils/images';
-import { colors } from '@app/theme/colors';
 import TextComponent from '../atoms/TextComponent';
 import TextInputComponent from '../atoms/TextInputComponent';
+
+import { colors } from '@app/theme/colors';
 
 type Props = FiledBaseProps & {};
 
@@ -29,8 +27,8 @@ const FieldInputPassword = (props: Props) => {
     >
       <View style={styles.row}>
         <View style={styles.iconContainer}>
-          <Image
-            source={ props.leftImage}
+          <Ionicon
+            name={'lock-closed-outline'}
             style={styles.filterIcon}
           />
         </View>
@@ -55,9 +53,9 @@ const FieldInputPassword = (props: Props) => {
         </View>
 
         <Pressable style={styles.iconContainer} onPress={handleTogglePassword}>
-          <Image
-            source={ props.rightImage}
-            style={showPassword ? styles.filterIcon : styles.iconDisabled}
+          <Ionicon
+            name={showPassword ? 'eye' : 'eye-off-outline'}
+            style={styles.filterIcon}
           />
         </Pressable>
       </View>
@@ -91,9 +89,10 @@ const styles = StyleSheet.create({
     // backgroundColor: 'orange',
   },
   filterIcon: {
+    fontSize: 20,
     width: 20,
     height: 20,
-    resizeMode: 'contain',
+    // resizeMode: 'contain',
     tintColor: colors.primary,
   },
   filterTitle: {

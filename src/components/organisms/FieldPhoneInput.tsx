@@ -1,6 +1,7 @@
 import { Image, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
 import PhoneInput, { ICountry } from 'react-native-international-phone-number';
+import EntypoIcon from 'react-native-vector-icons/Entypo'
 
 // import { chevron_down_icon } from '@app/utils/images';
 import { colors } from '@app/theme/colors';
@@ -36,8 +37,8 @@ const FieldPhoneInput = (props: Props) => {
         onChangePhoneNumber={handleChangeInput}
         selectedCountry={selectedCountry}
         onChangeSelectedCountry={handleChangeCountry}
-        defaultCountry={props.initialCountry ?? 'ES'}
-        // customCaret={ <Image source={chevron_down_icon} style={styles.caretIcon} />}
+        defaultCountry={props.initialCountry ?? 'BO'}
+        customCaret={ <EntypoIcon name="chevron-small-down" style={styles.caretIcon} />}
         phoneInputStyles={{
           container: {
             backgroundColor: colors.white,
@@ -94,13 +95,13 @@ const FieldPhoneInput = (props: Props) => {
             alignSelf: 'center',
             // fontWeight: 'bold',
             color: colors.dark,
-            fontFamily: 'Strawford-Regular',
+            // fontFamily: 'Strawford-Regular',
             textAlign: 'center',
             // backgroundColor: 'red',
           },
           input: {
             color: colors.dark,
-            fontFamily: 'Strawford-Regular',
+            // fontFamily: 'Strawford-Regular',
             backgroundColor: colors.light,
             borderWidth: 0.5,
             borderStyle: 'solid',
@@ -127,6 +128,7 @@ const styles = StyleSheet.create({
     marginVertical: 4,
   },
   caretIcon: {
+    fontSize: 20,
     width: 20,
     height: 20,
     tintColor: colors.muted,
@@ -136,7 +138,7 @@ const styles = StyleSheet.create({
   input: {
     color: colors.dark,
     fontSize: 16,
-    fontFamily: 'Strawford-Regular',
+    // fontFamily: 'Strawford-Regular',
   },
   inputCountryContainer: {
     flexDirection: 'row',

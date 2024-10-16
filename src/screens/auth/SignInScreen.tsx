@@ -1,24 +1,30 @@
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import React from 'react';
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { NavigationProp } from '@react-navigation/native';
 
 import { AuthStackParamList } from '@app/navigation/stacks/AuthStack';
 
-import ScreenView from '@app/components/screens/ScreenView';
-import ButtonComponent from '@app/components/buttons/ButtonComponent';
-import TextComponent from '@app/components/text/TextComponent';
-import FiledBase from '@app/components/fields/FiledBase';
-import SocialMediaBtn from '@app/components/buttons/SocialMediaBtn';
-import FieldInputPassword from '@app/components/fields/FieldInputPassword';
+import FieldInputPassword from '@app/components/organisms/FieldInputPassword';
+import ButtonComponent from '@app/components/molecules/ButtonComponent';
+import SocialMediaBtn from '@app/components/organisms/SocialMediaBtn';
+import TextComponent from '@app/components/atoms/TextComponent';
+import ScreenView from '@app/components/molecules/ScreenView';
+import FiledBase from '@app/components/organisms/FiledBase';
 
 import { colors } from '@app/theme/colors';
-import { mail_outline_icon } from '@app/utils/images';
 
 type Props = {
   navigation: NavigationProp<AuthStackParamList>;
 }
 
 const SignInScreen = (props: Props) => {
+  // GoogleSignin.configure({
+  //   // 617952791355-hafqtqeaa4rd924ubq619g4igj45gj9r
+  //   webClientId: '617952791355-hafqtqeaa4rd924ubq619g4igj45gj9r',
+  // });
+  
   const handleSignUp = () => {
     props.navigation.navigate('SIGN_UP_SCREEN');
   };
@@ -26,6 +32,18 @@ const SignInScreen = (props: Props) => {
   const handlePasswordRecovery = () => {
     props.navigation.navigate('PASSWORD_RECOVERY_SCREEN');
   };
+
+  const handleGoogleSignIn = async () => {
+    // await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    // // Get the users ID token
+    // const { idToken } = await GoogleSignin.signIn();
+
+    // // Create a Google credential with the token
+    // const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+    // // Sign-in the user with the credential
+    // return auth().signInWithCredential(googleCredential);
+  }
 
   return (
     <ScreenView>
@@ -38,7 +56,7 @@ const SignInScreen = (props: Props) => {
           type="email"
           placeholder={'Email'}
           autoCapitalize="none"
-          leftImage={mail_outline_icon}
+          // leftImage={mail_outline_icon}
         />
         <FieldInputPassword
           input
@@ -65,6 +83,12 @@ const SignInScreen = (props: Props) => {
           <View style={styles.divisor} />
         </View>
 
+        {Platform.OS === 'ios' && (
+          <SocialMediaBtn
+            title="Continuar con Apple"
+            socialType="apple"
+          />
+        )}
         <SocialMediaBtn
           title="Continuar con Google"
           socialType="google"

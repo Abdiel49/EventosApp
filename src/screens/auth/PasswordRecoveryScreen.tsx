@@ -2,14 +2,17 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { NavigationProp } from '@react-navigation/native';
 import React from 'react';
 
-import TextComponent from '@app/components/text/TextComponent';
-import FiledBase from '@app/components/fields/FiledBase';
-import ButtonComponent from '@app/components/buttons/ButtonComponent';
+// import TextComponent from '@app/components/text/TextComponent';
+// import FiledBase from '@app/components/fields/FiledBase';
+// import ButtonComponent from '@app/components/buttons/ButtonComponent';
 
 import { AuthStackParamList } from '@app/navigation/stacks/AuthStack';
 
-import { mail_outline_icon } from '@app/utils/images';
+// import { mail_outline_icon } from '@app/utils/images';
 import { colors } from '@app/theme/colors';
+import TextComponent from '@app/components/atoms/TextComponent';
+import FiledBase from '@app/components/organisms/FiledBase';
+import ButtonComponent from '@app/components/molecules/ButtonComponent';
 
 type Props = {
   navigation: NavigationProp<AuthStackParamList>;
@@ -33,7 +36,7 @@ const PasswordRecoveryScreen = (props: Props) => {
           type="email"
           placeholder={'Email'}
           autoCapitalize="none"
-          leftImage={mail_outline_icon}
+          // leftImage={mail_outline_icon}
         />
       </View>
 

@@ -4,10 +4,10 @@ import React from 'react';
 
 import { AuthStackParamList } from '@app/navigation/stacks/AuthStack';
 
-import ScreenView from '@app/components/screens/ScreenView';
-import TextComponent from '@app/components/text/TextComponent';
-import ButtonComponent from '@app/components/buttons/ButtonComponent';
-import FieldCodeInput from '@app/components/fields/FieldCodeInput';
+import ScreenView from '@app/components/molecules/ScreenView';
+import TextComponent from '@app/components/atoms/TextComponent';
+import FieldCodeInput from '@app/components/organisms/FieldCodeInput';
+import ButtonComponent from '@app/components/molecules/ButtonComponent';
 
 type Props = {
   navigation: NavigationProp<AuthStackParamList>;

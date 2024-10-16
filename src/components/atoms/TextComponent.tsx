@@ -1,7 +1,8 @@
 import { ColorValue, StyleSheet, Text, TextProps } from 'react-native';
 import React from 'react';
 
-import { colors } from '../../theme/colors';
+import normalize from '@app/utils/normalize';
+import { colors } from '@app/theme';
 
 type Props = TextProps & {
   size?:  '12' | '14' | '16' | '18' | '20' | '22' | '24' | '28';
@@ -53,32 +54,33 @@ export default TextComponent;
 const styles = StyleSheet.create({
   text: {
     color: colors.dark,
-    fontSize: 12,
+    fontSize: normalize(12),
     fontWeight: '400',
+    // fontFamily: 'Poppins-Regular',
   },
   size12: {
-    fontSize: 12,
+    fontSize: normalize(12),
   },
   size14: {
-    fontSize: 14,
+    fontSize: normalize(14),
   },
   size16: {
-    fontSize: 16,
+    fontSize: normalize(16),
   },
   size18: {
-    fontSize: 18,
+    fontSize: normalize(18),
   },
   size20: {
-    fontSize: 20,
+    fontSize: normalize(20),
   },
   size22: {
-    fontSize: 22,
+    fontSize: normalize(22),
   },
   size24: {
-    fontSize: 24,
+    fontSize: normalize(24),
   },
   size28: {
-    fontSize: 28,
+    fontSize: normalize(28),
   },
   bold: {
     fontWeight: 'bold',

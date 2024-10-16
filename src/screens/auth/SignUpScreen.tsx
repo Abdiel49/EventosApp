@@ -1,28 +1,40 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
+import { NavigationProp } from '@react-navigation/native';
 
-import FieldInputPassword from '@app/components/fields/FieldInputPassword';
-import TextComponent from '@app/components/text/TextComponent';
-import FiledBase from '@app/components/fields/FiledBase';
+import { AuthStackParamList } from '@app/navigation/stacks/AuthStack';
+
+import FieldInputPassword from '@app/components/organisms/FieldInputPassword';
+import ButtonComponent from '@app/components/molecules/ButtonComponent';
+import FieldPhoneInput from '@app/components/organisms/FieldPhoneInput';
+import TextComponent from '@app/components/atoms/TextComponent';
+import CheckboxLabel from '@app/components/organisms/checks/CheckboxLabel';
+import ScreenView from '@app/components/molecules/ScreenView';
+import FiledBase from '@app/components/organisms/FiledBase';
 
 import { colors } from '@app/theme/colors';
-import { NavigationProp } from '@react-navigation/native';
-import { AuthStackParamList } from '@app/navigation/stacks/AuthStack';
-import CheckboxLabel from '@app/components/checks/CheckboxLabel';
-import FieldPhoneInput from '@app/components/fields/FieldPhoneInput';
-import ButtonComponent from '@app/components/buttons/ButtonComponent';
-import ScreenView from '@app/components/screens/ScreenView';
+import { Controller, useForm } from 'react-hook-form';
 
 type Props = {
   navigation: NavigationProp<AuthStackParamList>;
 }
 
 const SignUpScreen = (props: Props) => {
+  const {control, handleSubmit, formState: { errors, isValid }} = useForm({
+    reValidateMode: 'onChange',
+    // defaultValues: {
+    //   name: '',
+    //   icon: '',
+    //   color: '',
+    // },
+  });
+
   const handleGoToSignIn = () => {
     props.navigation.navigate('SIGN_IN_SCREEN');
   };
 
   const handleSubmitRegister = () => {
+    // CREATE USER AND NAVIGATE TO SIGN_IN_SCREEN
     props.navigation.navigate('SIGN_IN_SCREEN');
   };
 
@@ -31,27 +43,70 @@ const SignUpScreen = (props: Props) => {
       <TextComponent size="16">Ingresa tu email y contraseña</TextComponent>
 
       <View style={styles.section}>
-        <FiledBase
-          input
-          type="default"
-          placeholder={'Nombre'}
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <FiledBase
+              input
+              type='default'
+              label="Nombres"
+              placeholder={'Nombres'}
+              onBlur={onBlur}
+              value={value}
+              onChangeText={onChange}
+            />
+          )}
+          name="name"
         />
+        {errors.name && <TextComponent color='primary'>This is required.</TextComponent>}
 
-        <FiledBase
-          input
-          type="default"
-          placeholder={'Apellidos'}
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <FiledBase
+              input
+              label="Apellidos"
+              type='default'
+              placeholder={'Apellidos'}
+              onBlur={onBlur}
+              value={value}
+              onChangeText={onChange}
+            />
+          )}
+          name="lastname"
         />
+        {errors.lastname && <TextComponent color='primary'>This is required.</TextComponent>}
 
-        <FiledBase
-          input
-          type="email"
-          autoCapitalize="none"
-          placeholder={'Email'}
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <FiledBase
+              input
+              type="email"
+              autoCapitalize="none"
+              placeholder={'Email'}
+              onBlur={onBlur}
+              value={value}
+              onChangeText={onChange}
+            />
+          )}
+          name="email"
         />
+        {errors.email && <TextComponent color='primary'>This is required.</TextComponent>}
 
-        <FieldPhoneInput />
 
+        <FieldPhoneInput  />
+
+        
         <FieldInputPassword
           input
           // label="Contraseña"

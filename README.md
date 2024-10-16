@@ -166,3 +166,9 @@ module.exports = function (api) {
 - [https://github.com/oblador/react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 - [https://react-native-async-storage.github.io/async-storage/docs/install/](https://react-native-async-storage.github.io/async-storage/docs/install/)
 - [https://www.react-hook-form.com/get-started/#Quickstart](https://www.react-hook-form.com/get-started/#Quickstart)
+
+```bash
+adb devices
+adb -s emulator-ID reverse tcp:3000 tcp:3000
+adb -s emulator-ID reverse tcp:8081 tcp:8081
+```
