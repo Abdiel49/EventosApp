@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     color: colors.dark,
     fontSize: normalize(12),
     fontWeight: '400',
-    // fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Regular',
   },
   size12: {
     fontSize: normalize(12),
@@ -83,13 +83,16 @@ const styles = StyleSheet.create({
     fontSize: normalize(28),
   },
   bold: {
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
   },
   semibold: {
-    fontWeight:'semibold',
+    // fontWeight:'semibold',
+    fontFamily: 'Poppins-SemiBold',
   },
   light: {
-    fontWeight: 'light',
+    fontFamily: 'Poppins-Light',
+    // fontWeight: 'light',
   },
   left: {
     textAlign: 'left',

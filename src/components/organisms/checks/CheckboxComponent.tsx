@@ -2,6 +2,7 @@ import { Image, Pressable, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import { colors } from '@app/theme';
+import normalize from '@app/utils/normalize';
 
 // import { checkbox_check_icon, checkbox_outline_icon } from '@app/utils/images';
 
@@ -46,11 +47,13 @@ const styles = StyleSheet.create({
   check: {
     width: 20,
     height: 20,
+    fontSize: normalize(20),
     color: colors.primary,
   },
   checkActive: {
     width: 20,
     height: 20,
+    fontSize: normalize(20),
     color: colors.primary,
   },
 });

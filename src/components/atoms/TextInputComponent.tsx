@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 14,
     fontWeight: '400',
+    fontFamily: 'Poppins-Regular',
     minWidth: 280,
     // lineHeight: 0,
     margin: 0,

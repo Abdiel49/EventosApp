@@ -32,6 +32,11 @@ const AuthStack = () => {
           headerStyle:{
             backgroundColor: colors.primary,
           },
+          headerTitleStyle: {
+            // fontWeight: 'bold',
+            fontSize: 18,
+            fontFamily: 'Poppins-SemiBold',
+          },
           // headerBackImageSource: chevron_left__white_icon,
           headerShadowVisible: false,
           headerBlurEffect: 'regular',
@@ -49,6 +54,11 @@ const AuthStack = () => {
         options={{
           headerStyle:{
             backgroundColor: colors.primary,
+          },
+          headerTitleStyle: {
+            // fontWeight: 'bold',
+            fontSize: 18,
+            fontFamily: 'Poppins-Regular',
           },
           headerTintColor: colors.white,
           // headerBackImageSource: chevron_left__white_icon,
@@ -70,9 +80,9 @@ const AuthStack = () => {
           },
           headerTintColor: colors.white,
           headerTitleStyle: {
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             fontSize: 18,
-            // fontFamily: 'Strawford-Regular',
+            fontFamily: 'Poppins-Regular',
           },
           // headerBackImageSource: chevron_left__white_icon,
           headerShadowVisible: false,
@@ -91,9 +101,9 @@ const AuthStack = () => {
           },
           headerTintColor: colors.white,
           headerTitleStyle: {
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             fontSize: 18,
-            // fontFamily: 'Strawford-Regular',
+            fontFamily: 'Poppins-Regular',
           },
           // headerBackImageSource: chevron_left__white_icon,
           headerShadowVisible: false,
@@ -114,7 +124,7 @@ const AuthStack = () => {
           headerTitleStyle: {
             fontWeight: 'bold',
             fontSize: 18,
-            // fontFamily: 'Strawford-Regular',
+            fontFamily: 'Poppins-Regular',
           },
           // headerBackImageSource: chevron_left__white_icon,
           headerShadowVisible: false,
