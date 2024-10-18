@@ -4,6 +4,8 @@ import database from '@react-native-firebase/database';
 
 import { ICreateUser, IUser } from "@app/types";
 import { authActions } from "./auth.sllice";
+import { storeData } from "@app/store/local/local.store";
+import { localStorageKeys } from "@app/store/local/localStorageKyes";
 
 export const signUpUser = (userC: ICreateUser) => async (dispatch: Dispatch) => {
   try {
@@ -45,7 +47,9 @@ export const signUpUser = (userC: ICreateUser) => async (dispatch: Dispatch) => 
       phoneNumber: userC.phoneNumber,
       countryCode: userC.countryCode,
     }
-    
+    await storeData(localStorageKeys.IS_AUTH, "true")
+    await storeData(localStorageKeys.USER, JSON.stringify(userCreated))
+
     // Actualizar el estado del usuario en el store
     dispatch(authActions.setUser(userCreated));
     
@@ -94,7 +98,7 @@ export const signInUser = (email: string, password: string) => async (dispatch: 
         userFound.email = userData?.email || '';
         userFound.displayName = userData?.displayName || '';
       });
-    
+
     // Actualizar el estado del usuario en el store
     dispatch(authActions.setUser(userFound));
     

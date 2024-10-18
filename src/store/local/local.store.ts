@@ -9,7 +9,7 @@ export const storeData = async (key: string, value: string) => {
   }
 };
 
-const getData = async (key: string) => {
+export const getData = async (key: string) => {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value !== null) {
@@ -28,6 +28,3 @@ const data = {
   age: 30,
   email: 'abdiel@example.com',
 }
-
-
-storeData(localStorageKeys.USER_UUID, JSON.stringify(data))
