@@ -14,23 +14,39 @@ import ScreenView from '@app/components/molecules/ScreenView';
 import FiledBase from '@app/components/organisms/FiledBase';
 
 import { colors } from '@app/theme/colors';
+import { Controller, useForm } from 'react-hook-form';
+import { EMAIL_REGEX, PASSEORD_REGEX } from '@app/shared/constants/constants';
+import { useAppDispatch, useAppSelector } from '@app/hooks/redux.hook';
 
 type Props = {
   navigation: NavigationProp<AuthStackParamList>;
 }
 
-
-const {height: screenHeight, width: screenWidth} = Dimensions.get('screen')
-const {height: windiwHeight, width: windiwWidth} = Dimensions.get('window')
+type LoginWithEmailPasswordType = {
+  email: string;
+  password: string;
+}
 
 const SignInScreen = (props: Props) => {
-  // GoogleSignin.configure({
-  //   // 617952791355-hafqtqeaa4rd924ubq619g4igj45gj9r
-  //   webClientId: '617952791355-hafqtqeaa4rd924ubq619g4igj45gj9r',
-  // });
-  console.log('screen height', screenHeight, 'screen width', screenWidth)
-  
-  console.log('window height', windiwHeight, 'window width', windiwWidth)
+  GoogleSignin.configure({
+    webClientId: '617952791355-hafqtqeaa4rd924ubq619g4igj45gj9r',
+  });
+
+  const {
+    control,
+    handleSubmit,
+    setValue, 
+    formState: { errors, isValid }
+  } = useForm<LoginWithEmailPasswordType>({
+    reValidateMode: 'onBlur',
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  const dispatch = useAppDispatch();
+  const {error, isAuth, user, isLoading} = useAppSelector(state => state.auth)
  
   const handleSignUp = () => {
     props.navigation.navigate('SIGN_UP_SCREEN');
@@ -57,22 +73,53 @@ const SignInScreen = (props: Props) => {
       <TextComponent size="16">Ingresa tu email y contraseña</TextComponent>
 
       <View style={styles.section}>
-        <FiledBase
-          input
-          label="Email"
-          type="email"
-          placeholder={'Email'}
-          autoCapitalize="none"
-          // leftImage={mail_outline_icon}
+      <Controller
+          control={control}
+          rules={{
+            required: true,
+            pattern: EMAIL_REGEX,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <FiledBase
+              input
+              type="email"
+              autoCapitalize="none"
+              placeholder={'Email'}
+              onBlur={onBlur}
+              value={value}
+              onChangeText={onChange}
+            />
+          )}
+          name="email"
         />
-        <FieldInputPassword
-          input
-          label="Contraseña"
-          type="password"
-          placeholder={'Contraseña'}
-          autoCapitalize="none"
+        {errors.email && <TextComponent color='primary'>This is required.</TextComponent>}
+        
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+            pattern: PASSEORD_REGEX,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <FieldInputPassword
+              input
+              type="password"
+              placeholder={'Contraseña'}
+              autoCapitalize="none"
+              onBlur={onBlur}
+              value={value}
+              onChangeText={onChange}
+            />
+          )}
+          name="password"
         />
-        <ButtonComponent title="Acceder" disabled={false} />
+        {errors.password && <TextComponent color='primary'>This is required.</TextComponent>}
+
+        <ButtonComponent
+          title="Acceder"
+          disabled={!isValid}
+
+        />
 
         <View style={styles.pv12}>
           <TextComponent

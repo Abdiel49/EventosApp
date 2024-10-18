@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BottomTabsNavigation, { BottomTabsParamList } from './BottomTabsNavigation';
 import AuthStack from './stacks/AuthStack';
+import { useAppSelector } from '@app/hooks/redux.hook';
 
 export type AuthStackParamList = {
   AUTH_STACK_PARAM_LIST: NativeStackNavigationProp<any>;
@@ -18,10 +19,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const AStack = createNativeStackNavigator<AuthStackParamList>();
 
 const AppNavigation = () => {
+  const {isAuth} = useAppSelector(state => state.auth)
 
-  const IS_SIGNING = false;
+  // const IS_SIGNING = isAuth;
 
-  if (!IS_SIGNING) {
+  if (!isAuth) {
     return (
       <NavigationContainer>
         <AStack.Navigator>

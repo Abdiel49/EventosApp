@@ -1,12 +1,10 @@
 import { Alert, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { NavigationProp } from '@react-navigation/native';
-import auth from '@react-native-firebase/auth';
-import database from '@react-native-firebase/database';
 import { Controller, useForm } from 'react-hook-form';
-import { FirebaseError } from 'firebase/app'
 
 import { AuthStackParamList } from '@app/navigation/stacks/AuthStack';
+import { useAppDispatch, useAppSelector } from '@app/hooks/redux.hook';
 
 import FieldInputPassword from '@app/components/organisms/FieldInputPassword';
 import ButtonComponent from '@app/components/molecules/ButtonComponent';
@@ -18,6 +16,8 @@ import FiledBase from '@app/components/organisms/FiledBase';
 
 import { colors } from '@app/theme/colors';
 import { EMAIL_REGEX, PASSEORD_REGEX } from '@app/shared/constants/constants';
+import { ICreateUser } from '@app/types';
+import { signUpUser } from '@app/store/slices/auth';
 
 type Props = {
   navigation: NavigationProp<AuthStackParamList>;
@@ -52,37 +52,26 @@ const SignUpScreen = (props: Props) => {
     },
   });
 
+  const dispatch = useAppDispatch();
+  const {error, isAuth, user, isLoading} = useAppSelector(state => state.auth)
+
   const handleGoToSignIn = () => {
     props.navigation.navigate('SIGN_IN_SCREEN');
   };
 
   const handleSubmitRegister = async (values: RegisterFormData) => {
     try {
-      // Crear el usuario con email y contraseña
-      const userCredential = await auth().createUserWithEmailAndPassword(
-        values.email,
-        values.password
-      );
-
-      const { user } = userCredential;
-      console.log('user data', JSON.stringify(user))
-
-      // Actualizar el perfil del usuario con los demás datos
-      await user.updateProfile({
-        displayName: `${values.name} ${values.lastname}`,
-      });
-
-      // Guardar los datos adicionales del usuario en Realtime Database
-      await database()
-      .ref(`/users/${user.uid}`)
-      .set({
-        name: values.name,
-        lastname: values.lastname,
-        phoneNumber: values.phoneNumber,
+      const userC: ICreateUser = {
         countryCode: values.countryCode,
-        email: values.email,
-      });
+        email: values.email.trim(),
+        password: values.password.trim(),
+        phoneNumber: values.phoneNumber.replaceAll(' ', ''),
+        terms: !!values.terms,
+        name: values.name.trim(),
+        lastname: values.lastname.trim(),
+      }
 
+      await dispatch(signUpUser(userC))
 
       Alert.alert('Registro exitoso', 'Usuario creado y perfil actualizado');
       // Navegar a la pantalla de inicio de sesión o dashboard
@@ -241,6 +230,7 @@ const SignUpScreen = (props: Props) => {
       <ButtonComponent
         title="Regístrarme"
         disabled={!isValid}
+        isLoading={isLoading}
         onPress={handleSubmit(handleSubmitRegister)}
       />
     </ScreenView>
