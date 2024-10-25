@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { localStorageKeys } from './localStorageKyes';
+import { Keys, localStorageKeys } from './localStorageKyes';
 
-export const storeData = async (key: string, value: string) => {
+export const storeData = async (key: Keys, value: string) => {
   try {
     await AsyncStorage.setItem(key, JSON.stringify(value));
   } catch (e) {
@@ -9,7 +9,7 @@ export const storeData = async (key: string, value: string) => {
   }
 };
 
-export const getData = async (key: string) => {
+export const getData = async (key: Keys) => {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value !== null) {
@@ -22,9 +22,3 @@ export const getData = async (key: string) => {
     // error reading value
   }
 };
-
-const data = {
-  name: 'abdiel',
-  age: 30,
-  email: 'abdiel@example.com',
-}

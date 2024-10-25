@@ -21,7 +21,7 @@ const AStack = createNativeStackNavigator<AuthStackParamList>();
 const AppNavigation = () => {
   const {isAuth} = useAppSelector(state => state.auth)
 
-  const IS_SIGNING = true;
+  const IS_SIGNING = isAuth;
 
   if (!IS_SIGNING) {
     return (

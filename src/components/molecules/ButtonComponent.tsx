@@ -37,7 +37,8 @@ export default ButtonComponent;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary,
-    borderRadius: 26,
+    borderRadius: 40,
+    height: 60,
     paddingHorizontal: 20,
     paddingVertical: 20,
     justifyContent: 'center',
@@ -45,7 +46,8 @@ const styles = StyleSheet.create({
   },
   buttonDisabled: {
     backgroundColor: colors.lowlight,
-    borderRadius: 26,
+    borderRadius: 40,
+    height: 60,
     paddingHorizontal: 20,
     paddingVertical: 20,
     justifyContent: 'center',

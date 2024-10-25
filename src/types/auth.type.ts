@@ -8,6 +8,10 @@ export interface IUser {
   countryCode: string;
 }
 
+export type CreateUserType = Omit<IUser, 'id'> & { password: string }
+
+export type LoginEmailType = Pick<CreateUserType, "email" | 'password'>
+
 export interface ICreateUser {
   name: string;
   lastname: string;

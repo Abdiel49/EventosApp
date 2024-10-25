@@ -1,13 +1,5 @@
+import { IUser } from "@app/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface IUser {
-  id: string;
-  name: string;
-  lastname: string;
-  email: string;
-  phoneNumber: string;
-  countryCode: string;
-}
 
 type AuthSliceState = {
   isAuth: boolean;

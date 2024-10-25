@@ -27,16 +27,15 @@ export const signUpUser = (userC: ICreateUser) => async (dispatch: Dispatch) => 
     });
 
     // Guardar los datos adicionales del usuario en Realtime Database
-    await database()
-      .ref(`/users/${user.uid}`)
-      .set({
-        name: userC.name,
-        lastname: userC.lastname,
-        displayName,
-        phoneNumber: userC.phoneNumber,
-        countryCode: userC.countryCode,
-        email: userC.email,
-    });
+    await createUserDB({
+      id: user.uid,
+      name: userC.name,
+      lastname: userC.lastname,
+      displayName: displayName,
+      phoneNumber: userC.phoneNumber,
+      countryCode: userC.countryCode,
+      email: userC.email,
+    })
 
     const userCreated: IUser = {
       id: user.uid,
@@ -47,8 +46,8 @@ export const signUpUser = (userC: ICreateUser) => async (dispatch: Dispatch) => 
       phoneNumber: userC.phoneNumber,
       countryCode: userC.countryCode,
     }
-    await storeData(localStorageKeys.IS_AUTH, "true")
-    await storeData(localStorageKeys.USER, JSON.stringify(userCreated))
+    await storeData('IS_AUTH', "true")
+    await storeData('USER', JSON.stringify(userCreated))
 
     // Actualizar el estado del usuario en el store
     dispatch(authActions.setUser(userCreated));
@@ -76,7 +75,7 @@ export const signInUser = (email: string, password: string) => async (dispatch: 
     const { user } = userCredential;
 
     const userFound: IUser = {
-      id: user.uid,
+    id: user.uid,
       name: '',
       lastname: '',
       displayName: '',
@@ -107,9 +106,27 @@ export const signInUser = (email: string, password: string) => async (dispatch: 
     // Actualizar el estado de autenticación en el store
     dispatch(authActions.setIsAuth(true));
   } catch (error) {
-    console.error('Error iniciando sesión:', JSON.stringify(error));
+    console.error('Error iniciando sesión:', error);
     dispatch(authActions.setError(JSON.stringify(error)));  
     dispatch(authActions.setIsLoading(false));
   }; 
 }
 
+export const createUserDB = (user: IUser) => async (dispatch: Dispatch) => {
+  try {
+    await database()
+      .ref(`/users/${user.id}`)
+      .set({
+        name: user.name,
+        lastname: user.lastname,
+        displayName: user.displayName,
+        phoneNumber: user.phoneNumber,
+        countryCode: user.countryCode,
+        email: user.email,
+    });
+  } catch (error) {
+    console.error('Error creando usuario:', error);
+    dispatch(authActions.setError(JSON.stringify(error)));  
+    dispatch(authActions.setIsLoading(false));
+  }
+}

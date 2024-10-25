@@ -15,7 +15,7 @@ import ScreenView from '@app/components/molecules/ScreenView';
 import FiledBase from '@app/components/organisms/FiledBase';
 
 import { colors } from '@app/theme/colors';
-import { EMAIL_REGEX, PASSEORD_REGEX } from '@app/shared/constants/constants';
+import { EMAIL_REGEX, PASSWORD_REGEX } from '../../../constants';
 import { ICreateUser } from '@app/types';
 import { signUpUser } from '@app/store/slices/auth';
 
@@ -172,7 +172,7 @@ const SignUpScreen = (props: Props) => {
           control={control}
           rules={{
             required: true,
-            pattern: PASSEORD_REGEX,
+            pattern: PASSWORD_REGEX,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <FieldInputPassword

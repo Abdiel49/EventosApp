@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   input: {
-    height: 18,
+    // height: 18,
     // width: '20%',
   },
   iconDisabled: {

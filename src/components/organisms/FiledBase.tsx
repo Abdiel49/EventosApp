@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   input: {
-    height: 18,
+    // height: 18,
   },
   focused: {
     borderWidth: 0.5,

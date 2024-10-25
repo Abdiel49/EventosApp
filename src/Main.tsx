@@ -10,7 +10,6 @@ const Main = () => {
     <Provider store={store}>
       <AppNavigation />
     </Provider>
-
   )
 }
 

@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
     color: colors.dark,
     fontSize: normalize(12),
     fontWeight: '400',
+    margin: 0,
+    padding: 0,
     fontFamily: 'Poppins-Regular',
   },
   size12: {
