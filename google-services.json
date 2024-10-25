@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "617952791355",
+    "project_id": "eventosapp-136ee",
+    "storage_bucket": "eventosapp-136ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617952791355:android:596b5fe7f2badb618bc51e",
+        "android_client_info": {
+          "package_name": "com.scesi.events"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617952791355-d74pn2lrtpc3sbdgsb0ajbsrfd762rro.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scesi.events",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "617952791355-hafqtqeaa4rd924ubq619g4igj45gj9r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRcwD7u5cW1ZZQ6btK1SGI3QhQyen7V98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617952791355-hafqtqeaa4rd924ubq619g4igj45gj9r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "617952791355-49lf7ip0eia1est5r5qr4uams768gm79.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.scesi.events"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

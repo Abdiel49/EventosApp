@@ -35,6 +35,9 @@ npm i --save-dev @types/react-native-vector-icons
 
 # async-storage (comunity version)
 npm install @react-native-async-storage/async-storage
+
+# react hook form
+npm install react-hook-form
 ```
 
 ## Configuracion de Absolute paths en Expo React Native
@@ -162,3 +165,10 @@ module.exports = function (api) {
 - [https://redux-toolkit.js.org/](https://redux-toolkit.js.org/)
 - [https://github.com/oblador/react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 - [https://react-native-async-storage.github.io/async-storage/docs/install/](https://react-native-async-storage.github.io/async-storage/docs/install/)
+- [https://www.react-hook-form.com/get-started/#Quickstart](https://www.react-hook-form.com/get-started/#Quickstart)
+
+```bash
+adb devices
+adb -s emulator-ID reverse tcp:3000 tcp:3000
+adb -s emulator-ID reverse tcp:8081 tcp:8081
+```
